@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GroceryStore.Models.Products.ProductDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Product</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Product
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Enrollment Date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price) грн за кг
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td class="butCol">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new {@class = "butCol"}) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
